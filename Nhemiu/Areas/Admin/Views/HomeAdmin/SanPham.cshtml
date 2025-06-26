@@ -1,0 +1,55 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<Nhemiu.Models.SanPham>
+
+@{
+    ViewData["Title"] = "SanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutSanPham.cshtml";
+}
+
+<h1>SanPham</h1>
+
+<p>
+    <a asp-action="ThemSanPham">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenSp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLuongTong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongTong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSp">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSp">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSp">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
